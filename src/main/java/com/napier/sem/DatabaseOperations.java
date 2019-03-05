@@ -68,4 +68,25 @@ public class DatabaseOperations
             }
         }
     }
+    public String statement(String s)
+    {
+        try
+        {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(s);
+
+            while (rs.next()) {
+                String output = rs.getString("Name");
+                System.out.println(output + "\n");
+            }
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Failed to run SQL Query.");
+        }
+
+
+
+        return "";
+    }
 }
