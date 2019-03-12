@@ -1,0 +1,50 @@
+============Basic Country Reports============
+
+SELECT Code, Name, Continent, Region, Population, Capital
+FROM country
+ORDER BY Population DESC
+
+SELECT Code, Name, Continent, Region, Population, Capital
+FROM country
+WHERE Continent = ""
+ORDER BY Population DESC
+
+SELECT Code, Name, Continent, Region, Population, Capital
+FROM country
+WHERE Region = ""
+ORDER BY Population DESC
+
+============Top n Country Reports============
+
+
+
+
+============Basic City Reports============
+
+SELECT Code, Name, Country, Disrict, Population
+FROM city
+ORDER BY Population DESC
+
+SELECT Code, Name, Country, Disrict, Population
+FROM city
+WHERE Continent = ""
+ORDER BY Population DESC
+
+SELECT Code, Name, Country, Disrict, Population
+FROM city
+WHERE Region = ""
+ORDER BY Population DESC
+
+SELECT Code, Name, Country, Disrict, Population
+FROM city
+WHERE County = ""
+ORDER BY Population DESC
+
+SELECT Code, Name, Country, Disrict, Population
+FROM city
+WHERE District = ""
+ORDER BY Population DESC
+
+
+
+SUM(Population)
