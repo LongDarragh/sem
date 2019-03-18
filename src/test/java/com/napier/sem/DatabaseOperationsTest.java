@@ -38,21 +38,17 @@ public class DatabaseOperationsTest
     {
         assertNotNull(dm);
         Mockito.when(dm.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example")).thenReturn(c);
-        Mockito.when(c.prepareStatement(anyString())).thenReturn(stmt);
-        Mockito.when(stmt.executeQuery()).thenReturn(rs);
     }
 
     @Test
-    public void statement() throws Exception
+    public void statement() throws NullPointerException
     {
-
-
         db.statement(s);
         assertEquals(stmt, stmt);
     }
 
     @Test
-    public void connect() throws Exception
+    public void connect()
     {
         db.connect();
         assertEquals(c, c);

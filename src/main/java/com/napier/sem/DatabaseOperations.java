@@ -72,18 +72,30 @@ public class DatabaseOperations
     {
         try
         {
-            PreparedStatement stmt = con.prepareStatement(s);
-            stmt.setString(1, "Asia");
-            ResultSet rs = stmt.executeQuery();
+            if( s != null)
+            {
+                PreparedStatement stmt = con.prepareStatement(s);
+                stmt.setString(1, "Asia");
+                ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
-                String output = rs.getString("Name");
-                System.out.println(output + "\n");
+                while (rs.next())
+                {
+                    String output = rs.getString("Name");
+                    System.out.println(output + "\n");
+                }
             }
+            else
+                {
+                    System.out.println("No statement found.");
+                }
         }
         catch(SQLException e)
         {
             System.out.println("Failed to run SQL Query.");
+        }
+        catch (NullPointerException n)
+        {
+            System.out.println("No statement found.");
         }
 
 
