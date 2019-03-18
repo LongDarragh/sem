@@ -72,8 +72,9 @@ public class DatabaseOperations
     {
         try
         {
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(s);
+            PreparedStatement stmt = con.prepareStatement(s);
+            stmt.setString(1, "Asia");
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 String output = rs.getString("Name");
