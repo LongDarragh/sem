@@ -1,8 +1,9 @@
 package com.napier.sem;
 
 
-import org.junit.Before;
+
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -13,6 +14,7 @@ import java.sql.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DatabaseOperationsTest
@@ -25,39 +27,34 @@ public class DatabaseOperationsTest
     private PreparedStatement stmt;
     @Mock
     private ResultSet rs;
-    @Mock
-    private DatabaseOperations db;
+    //@Mock
+   // private DatabaseOperations db;
+    DatabaseOperations db = new DatabaseOperations();
+    public static String s = "SELECT Name FROM city ORDER BY Population DESC";
 
-    private String s;
 
-
-    @Before
+    @BeforeAll
     public void setUp() throws Exception
     {
         assertNotNull(dm);
-        Mockito.when(c.prepareStatement(any(String.class))).thenReturn(stmt);
-        //Mockito.when(dm.getConnection()).thenReturn(c);
-
-        Mockito.when(db.statement(any(String.class))).thenReturn(s);
+        Mockito.when(dm.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example")).thenReturn(c);
+        Mockito.when(c.prepareStatement(anyString())).thenReturn(stmt);
+        Mockito.when(stmt.executeQuery()).thenReturn(rs);
     }
 
     @Test
-    public void statement()
+    public void statement() throws Exception
     {
-        String s = "SELECT Name FROM city ORDER BY Population DESC";
+
+
         db.statement(s);
-        assertEquals(s,s);
+        assertEquals(stmt, stmt);
     }
 
     @Test
-    public void connect()
+    public void connect() throws Exception
     {
         db.connect();
-    }
-
-    @Test
-    public void disconnect()
-    {
-        db.disconnect();
+        assertEquals(c, c);
     }
 }
