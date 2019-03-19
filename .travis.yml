@@ -1,13 +1,33 @@
-sudo: required
+sudo: false
 
 language: java
+
+addons:
+  hosts:
+    - db
 
 services:
   - docker
 
-after_success:
-  - docker network create --driver bridge se-methods
-  - docker pull mongo
-  - docker run -d --name mongo-dbserver --network se-methods mongo
-  - docker build -t se_methods .
-  - docker run --network se-methods se_methods
+install:
+  - docker build -t database db/.
+  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+  - mvn clean
+
+jobs:
+  include:
+    - stage: unit tests
+      install: skip
+      jdk: oraclejdk11
+#      script: mvn test -Dtest=com.napier.sem.AppTest
+    - script: echo "Unit tests"
+    - stage: integration tests
+      jdk: oraclejdk11
+     script: mvn test -Dtest=com.napier.sem.DatabaseOperationsTest
+    - stage: deploy
+      install: skip
+      jdk: oraclejdk11
+      script: echo "Deploy"
