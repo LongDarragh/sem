@@ -44,13 +44,11 @@ public class DatabaseOperationsTest
     public void statement() throws NullPointerException
     {
         db.statement(s);
-        assertEquals(stmt, stmt);
     }
 
     @Test
     public void connect()
     {
         db.connect();
-        assertEquals(c, c);
     }
 }
