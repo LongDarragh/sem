@@ -54,6 +54,7 @@ public class App
             System.out.print(ALcountry.get(i).getRegion() + " ");
             System.out.print(ALcountry.get(i).getPopulation() + "\n");
         }
+        System.out.println("End.");
 
         db1.disconnect();
     }
