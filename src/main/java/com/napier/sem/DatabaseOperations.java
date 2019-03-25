@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseOperations
 {
@@ -68,12 +69,28 @@ public class DatabaseOperations
             }
         }
     }
+    public ArrayList<Country> statement(String s) {
+        ArrayList<Country> c = new ArrayList<>();
+        try {
+          if( s != null)
+            {
+              Statement stmt = con.createStatement();
+              ResultSet rs = stmt.executeQuery(s);
+
+              while (rs.next()) {
+                  c.add(new Country(rs.getString("Code"), rs.getString("Name"), rs.getString("Continent"), rs.getString("Region"), rs.getInt("Population")));
+              }
+             
+            else
+                {
+                    System.out.println("No statement found.");
+                }
+        } catch (SQLException e) {
+
     public String statement(String s)
     {
         try
-        {
-            if( s != null)
-            {
+        {            
                 PreparedStatement stmt = con.prepareStatement(s);
                 stmt.setString(1, "Asia");
                 ResultSet rs = stmt.executeQuery();
@@ -83,11 +100,7 @@ public class DatabaseOperations
                     String output = rs.getString("Name");
                     System.out.println(output + "\n");
                 }
-            }
-            else
-                {
-                    System.out.println("No statement found.");
-                }
+           
         }
         catch(SQLException e)
         {
@@ -99,7 +112,6 @@ public class DatabaseOperations
         }
 
 
-
-        return "";
+        return c;
     }
 }
