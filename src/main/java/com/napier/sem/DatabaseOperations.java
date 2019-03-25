@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseOperations
 {
@@ -68,25 +69,20 @@ public class DatabaseOperations
             }
         }
     }
-    public String statement(String s)
-    {
-        try
-        {
+    public ArrayList<Country> statement(String s) {
+        ArrayList<Country> c = new ArrayList<>();
+        try {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(s);
 
             while (rs.next()) {
-                String output = rs.getString("Name");
-                System.out.println(output + "\n");
+                c.add(new Country(rs.getString("Code"), rs.getString("Name"), rs.getString("Continent"), rs.getString("Region"), rs.getInt("Population")));
             }
-        }
-        catch(SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("Failed to run SQL Query.");
         }
 
 
-
-        return "";
+        return c;
     }
 }
