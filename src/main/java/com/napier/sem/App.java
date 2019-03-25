@@ -5,7 +5,7 @@ public class App
 {
     public static void main(String[] args)
     {
-        String query1="SELECT Name FROM city WHERE Continent = ? ORDER BY Population DESC";
+        String query1="SELECT Code, Name FROM city WHERE Continent = ? ORDER BY Population DESC";
         DatabaseOperations db1 = new DatabaseOperations();
 
         db1.connect();
