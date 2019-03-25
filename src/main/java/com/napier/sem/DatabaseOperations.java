@@ -69,7 +69,7 @@ public class DatabaseOperations
             }
         }
     }
-    public ArrayList<Country> statement(String s) {
+    public ArrayList<Country> statementCountry(String s) {
         ArrayList<Country> c = new ArrayList<>();
         try {
           if( s != null)
@@ -85,6 +85,35 @@ public class DatabaseOperations
                 {
                     System.out.println("No statement found.");
                 }
+
+
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Failed to run SQL Query.");
+        }
+        catch (NullPointerException n)
+        {
+            System.out.println("No statement found.");
+        }
+        return c;
+    }
+    public ArrayList<City> statementCity(String s) {
+        ArrayList<City> c = new ArrayList<>();
+        try {
+            if( s != null)
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(s);
+
+                while (rs.next()) {
+                    c.add(new City(rs.getString("Name"), rs.getString("Country"), rs.getString("District"), rs.getInt("Population")));
+                }
+            }
+            else
+            {
+                System.out.println("No statement found.");
+            }
 
 
         }

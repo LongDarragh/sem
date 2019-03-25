@@ -23,7 +23,7 @@ public class App
         db1.connect();
 
         System.out.println("\n \n \n Countries of the world. \n \n \n");
-        ALcountry = db1.statement(country);
+        ALcountry = db1.statementCountry(country);
         for(int i = 0; i < ALcountry.size(); i++)
         {
             System.out.print(ALcountry.get(i).getCode() + " ");
@@ -34,7 +34,7 @@ public class App
         }
 
         System.out.println("\n \n \n Countries of Europe. \n \n \n");
-        ALcountry = db1.statement(countryContinent);
+        ALcountry = db1.statementCountry(countryContinent);
         for(int i = 0; i < ALcountry.size(); i++)
         {
             System.out.print(ALcountry.get(i).getCode() + " ");
@@ -45,7 +45,7 @@ public class App
         }
 
         System.out.println("\n \n \n Countries of Central Africa. \n \n \n");
-        ALcountry = db1.statement(countryRegion);
+        ALcountry = db1.statementCountry(countryRegion);
         for(int i = 0; i < ALcountry.size(); i++)
         {
             System.out.print(ALcountry.get(i).getCode() + " ");
