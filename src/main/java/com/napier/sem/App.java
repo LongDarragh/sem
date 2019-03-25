@@ -7,7 +7,6 @@ public class App
 {
     public static void main(String[] args)
     {
-
         String country ="SELECT Code, Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC";
         String countryContinent ="SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Continent = 'Europe' ORDER BY Population DESC";
         String countryRegion ="SELECT Code, Name, Continent, Region, Population, Capital FROM country WHERE Region = 'Central Africa' ORDER BY Population DESC";
