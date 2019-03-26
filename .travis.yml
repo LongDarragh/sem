@@ -32,8 +32,3 @@ jobs:
       jdk: oraclejdk11
       script: echo "Deploy"
 
-stages:
-  - unit tests
-  - integration tests
-  - name: deploy
-    if: branch = master
