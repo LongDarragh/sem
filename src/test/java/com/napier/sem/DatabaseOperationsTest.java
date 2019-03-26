@@ -24,6 +24,6 @@ public class DatabaseOperationsTest
     @Test
     public void connect()
     {
-        db.connect("localhost:3306");
+        db.connect("localhost:33060");
     }
 }
