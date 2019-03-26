@@ -20,7 +20,7 @@ public class App
         DatabaseOperations db1 = new DatabaseOperations();
         ArrayList<Country> ALcountry;
 
-        db1.connect();
+        db1.connect("db:3306");
 
         System.out.println("\n \n \n Countries of the world. \n \n \n");
         ALcountry = db1.statementCountry(country);
