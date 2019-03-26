@@ -19,7 +19,7 @@ public class DatabaseOperations
         try
         {
             // Load Database driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -34,9 +34,9 @@ public class DatabaseOperations
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(10000);
+                Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://"+ location +"/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://"+ location +"/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -74,18 +74,18 @@ public class DatabaseOperations
         ArrayList<Country> c = new ArrayList<>();
         try {
           if( s != null)
-            {
+          {
               Statement stmt = con.createStatement();
               ResultSet rs = stmt.executeQuery(s);
 
               while (rs.next()) {
                   c.add(new Country(rs.getString("Code"), rs.getString("Name"), rs.getString("Continent"), rs.getString("Region"), rs.getInt("Population")));
               }
-            }
-            else
-                {
-                    System.out.println("No statement found.");
-                }
+          }
+          else
+              {
+                  System.out.println("No statement found.");
+              }
 
 
         }
@@ -95,7 +95,7 @@ public class DatabaseOperations
         }
         catch (NullPointerException n)
         {
-            System.out.println("No statement found.");
+            System.out.println(n.getMessage());
         }
         return c;
     }

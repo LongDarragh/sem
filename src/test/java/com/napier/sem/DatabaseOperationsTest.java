@@ -3,6 +3,7 @@ package com.napier.sem;
 
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ public class DatabaseOperationsTest
 
     }
 
-    @Test
+    @BeforeAll
     public void connect()
     {
-        db.connect("localhost:33060");
+        db.connect("192.168.99.100:33060");
     }
 }

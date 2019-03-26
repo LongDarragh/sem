@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class App
 {
+    static DatabaseOperations db1 = new DatabaseOperations();
     public static void main(String[] args)
     {
         String country ="SELECT Code, Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC";
@@ -17,10 +18,10 @@ public class App
         String cityCountry ="SELECT Name, country.Name, District, Population FROM city JOIN country ON country.Code=city.CountryCode WHERE country.Name = Italy ORDER BY Population DESC";
         String cityDistrict ="SELECT Name, country.Name, District, Population FROM city JOIN country ON country.Code=city.CountryCode ORDER BY Population DESC";
 
-        DatabaseOperations db1 = new DatabaseOperations();
+
         ArrayList<Country> ALcountry;
 
-        db1.connect("db:3306");
+        db1.connect("192.168.99.100:33060");
 
         System.out.println("\n \n \n Countries of the world. \n \n \n");
         ALcountry = db1.statementCountry(country);
