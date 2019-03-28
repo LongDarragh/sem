@@ -16,7 +16,7 @@ public class DatabaseOperationsTest
     @Test
     public void statementCountry() throws NullPointerException, IndexOutOfBoundsException
     {
-        db.connect("192.168.99.100:33060");
+        db.connect("localhost:33060");
         ArrayList<Country> al =  db.statementCountry("SELECT Code, Name, Continent, Region, Population, Capital FROM country ORDER BY Population DESC");
         assertEquals(al.get(0).getName(), "China");
     }
@@ -24,7 +24,7 @@ public class DatabaseOperationsTest
     @Test
     public void statementCity() throws NullPointerException, IndexOutOfBoundsException
     {
-        db.connect("192.168.99.100:33060");
+        db.connect("localhost:33060");
         ArrayList<City> al =  db.statementCity("SELECT city.Name, country.Name AS Country, District, city.Population FROM city JOIN country ON country.Code=city.CountryCode ORDER BY Population DESC");
         assertEquals(al.get(0).getName(), "Mumbai (Bombay)");
     }
