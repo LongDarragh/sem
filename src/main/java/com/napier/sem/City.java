@@ -18,7 +18,6 @@ public class City
         this.population = population;
     }
 
-
     public String getName()
     {
         return name;

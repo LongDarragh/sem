@@ -21,27 +21,6 @@ public class Country
         this.population = population;
     }
 
-    /*public void setCode(String code)
-    {
-        this.code = code;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-    public void setContinent(String continent)
-    {
-        this.continent = continent;
-    }
-    public void setRegion(String region)
-    {
-        this.region = region;
-    }
-    public void setPopulation(int population)
-    {
-        this.population = population;
-    }*/
-
     public String getCode()
     {
         return code;

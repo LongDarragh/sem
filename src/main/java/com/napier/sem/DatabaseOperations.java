@@ -70,24 +70,25 @@ public class DatabaseOperations
             }
         }
     }
+
     public ArrayList<Country> statementCountry(String s) {
         ArrayList<Country> c = new ArrayList<>();
-        try {
-          if( s != null)
-          {
-              Statement stmt = con.createStatement();
-              ResultSet rs = stmt.executeQuery(s);
+        try
+        {
+            if( s != null) //Checks if the input String is Null
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(s);
 
-              while (rs.next()) {
-                  c.add(new Country(rs.getString("Code"), rs.getString("Name"), rs.getString("Continent"), rs.getString("Region"), rs.getInt("Population")));
-              }
-          }
-          else
-              {
-                  System.out.println("No statement found.");
-              }
-
-
+                //Adds results to an ArrayList
+                while (rs.next()) {
+                    c.add(new Country(rs.getString("Code"), rs.getString("Name"), rs.getString("Continent"), rs.getString("Region"), rs.getInt("Population")));
+                }
+            }
+            else
+            {
+                System.out.println("No statement found.");
+            }
         }
         catch (SQLException e)
         {
@@ -99,14 +100,17 @@ public class DatabaseOperations
         }
         return c;
     }
+
     public ArrayList<City> statementCity(String s) {
         ArrayList<City> c = new ArrayList<>();
-        try {
-            if( s != null)
+        try
+        {
+            if( s != null) //Checks if the input String is Null
             {
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(s);
 
+                //Adds results to an ArrayList
                 while (rs.next()) {
                     c.add(new City(rs.getString("Name"), rs.getString("Country"), rs.getString("District"), rs.getInt("Population")));
                 }
