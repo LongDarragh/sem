@@ -124,7 +124,7 @@ public class DatabaseOperations
         }
         catch (NullPointerException n)
         {
-            System.out.println("No statement found.");
+            System.out.println(n.getMessage());
         }
         return c;
     }
