@@ -55,6 +55,6 @@ jobs:
 stages:
   - unit tests
   - integration tests
-  - name: deploy
+  - name: GitHub Release
     if: branch = master
 
