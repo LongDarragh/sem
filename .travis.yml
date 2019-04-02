@@ -38,7 +38,6 @@ jobs:
     api_key: "$GITHUB_OAUTH_TOKEN"
     file: "$TRAVIS_BUILD_DIR/target/seMethod.jar"
     skip_cleanup: true
-
   - stage: Google Cloud Deploy
     install: skip
     jdk: oraclejdk11
@@ -79,7 +78,7 @@ stages:
   if: branch = master
 - name: Google Cloud Deploy
   if: branch = master
-  
+
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 before_install:
