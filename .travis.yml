@@ -51,7 +51,7 @@ jobs:
     - gcloud version
       # Login to our Google Cloud Account using credentials file
     - gcloud auth activate-service-account --key-file client-secret.json
-     script:
+    script:
           # Set the project we will work in.
      - gcloud config set project set08103
           # Set the zone to work in.
