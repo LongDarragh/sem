@@ -82,5 +82,5 @@ stages:
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 before_install:
-- openssl aes-256-cbc -K $encrypted_aad5dd5766ef_key -iv $encrypted_aad5dd5766ef_iv
+- openssl aes-256-cbc -K $encrypted_7b2e584bc08e072f6087ed641e09c0324ed49745_key -iv $encrypted_7b2e584bc08e072f6087ed641e09c0324ed49745_iv
   -in client-secret.json.enc -out client-secret.json -d
