@@ -42,7 +42,8 @@
 | 31 | Number of people in the world speaking a language. | NO | Screenshot |
 
 
-|                  | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
+
+| ................ | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
 | Long Darragh Chow|               |               |               |               |                   |         |
 | Kieran Brown     |               |               |               |               |                   |         |
 | Ihtisham Chaudhry|               |               |               |               |                   |         |
