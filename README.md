@@ -44,7 +44,7 @@
 
 
 |                   | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
-| ------------- |:-------------:| -----:| ----:|
+| ------------- | ------------- | ----- | ----- | ----- | ----- | ----- |
 | Long Darragh Chow | 0.5           | 0.5           | 0.5           | 0.5           | 0.5               | 0.5     |
 | Kieran Brown      | 0.5           | 0.5           | 0.5           | 0.5           | 0.5               | 0.5     |
 | Ihtisham Chaudhry | 0.5           | 0.5           | 0.5           | 0.5           | 0.5               | 0.5     |
