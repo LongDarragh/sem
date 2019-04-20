@@ -36,10 +36,10 @@
 | 26 | The population of the world. | NO | Screenshot |
 | 27 | The population of a continent. | NO | Screenshot |
 | 28 | The population of a region. | NO | Screenshot |
-| 28 | The population of a country. | NO | Screenshot |
-| 29 | The population of a district. | NO | Screenshot |
-| 30 | The population of a city. | NO | Screenshot |
-| 31 | Number of people in the world speaking a language. | NO | Screenshot |
+| 29 | The population of a country. | NO | Screenshot |
+| 30 | The population of a district. | NO | Screenshot |
+| 31 | The population of a city. | NO | Screenshot |
+| 32 | Number of people in the world speaking a language. | NO | Screenshot |
 
 
 
