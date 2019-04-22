@@ -8,7 +8,7 @@ public class App
 {
     static DatabaseOperations db1 = new DatabaseOperations();  //Instantiate new DatabaseOperations object
 
-    //ArrayLists for storing results
+    //Variables for storing results
     static ArrayList<Country> ALcountry;
     static ArrayList<City> ALcity;
     static String population;
@@ -33,13 +33,16 @@ public class App
         String cityDistrict ="SELECT city.Name, country.Name AS Country, District, city.Population FROM city JOIN country ON country.Code=city.CountryCode WHERE District = 'England' ORDER BY Population DESC";
 
         //SQL queries for population reports
-        String world = "SELECT SUM(Population) AS Population FROM country";
-        String continent = "SELECT SUM(Population) AS Population FROM country WHERE Continent = 'Asia'";
+        String popWorld = "SELECT SUM(Population) FROM country";
+        String popContinent = "SELECT SUM(Population) FROM country WHERE Continent = 'Asia'";
+        String popRegion = "SELECT SUM(Population) FROM country WHERE Region = 'Central Africa'";
+        String popCountry = "SELECT SUM(Population) FROM country WHERE Name = 'France'";
+        String popDistrict = "SELECT SUM(Population) FROM city WHERE District = 'Scotland'";
+        String popCity = "SELECT Population FROM city WHERE Name = 'Berlin'";
+
 
         db1.connect("192.168.99.100:33060"); //Connect to database
         Scanner sc = new Scanner(System.in); //Scanner for top n queries
-        Scanner scPlace = new Scanner(System.in); //Scanner for user defined locations
-
 
 
         //ALL COUNTRIES
@@ -180,11 +183,23 @@ public class App
 
 
         //Population of the world
-        population = db1.statementPopulation(world);
+        population = db1.statementPopulation(popWorld);
         System.out.println("The population of the world is " + population + ". \n \n \n");
 
-        population = db1.statementPopulation(continent);
-        System.out.println("The population of the Asia is " + population + ".");
+        population = db1.statementPopulation(popContinent);
+        System.out.println("The population of the Asia is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popRegion);
+        System.out.println("The population of the Central Africa is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popCountry);
+        System.out.println("The population of the France is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popDistrict);
+        System.out.println("The population of the Scotland is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popCity);
+        System.out.println("The population of the Berlin is " + population + ". \n \n \n");
 
 
 
