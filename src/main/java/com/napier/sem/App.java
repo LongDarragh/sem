@@ -8,18 +8,14 @@ public class App
 {
     static DatabaseOperations db1 = new DatabaseOperations();  //Instantiate new DatabaseOperations object
 
-    //ArrayLists for storing results
+    //Variables for storing results
     static ArrayList<Country> ALcountry;
     static ArrayList<City> ALcity;
+    static String population;
 
     //Stores value for top n queries where n is defined by the user
     static int n = 0;
 
-    //Strings for user defined locations
-    static String continent;
-    static String region;
-    static String district;
-    static String userCountry;
 
     public static void main(String[] args)
     {
@@ -36,11 +32,17 @@ public class App
         String cityCountry ="SELECT city.Name, country.Name AS Country, District, city.Population FROM city JOIN country ON country.Code=city.CountryCode WHERE country.Name = 'Italy' ORDER BY Population DESC";
         String cityDistrict ="SELECT city.Name, country.Name AS Country, District, city.Population FROM city JOIN country ON country.Code=city.CountryCode WHERE District = 'England' ORDER BY Population DESC";
 
+        //SQL queries for population reports
+        String popWorld = "SELECT SUM(Population) FROM country";
+        String popContinent = "SELECT SUM(Population) FROM country WHERE Continent = 'Asia'";
+        String popRegion = "SELECT SUM(Population) FROM country WHERE Region = 'Central Africa'";
+        String popCountry = "SELECT SUM(Population) FROM country WHERE Name = 'France'";
+        String popDistrict = "SELECT SUM(Population) FROM city WHERE District = 'Scotland'";
+        String popCity = "SELECT Population FROM city WHERE Name = 'Berlin'";
+
 
         db1.connect("192.168.99.100:33060"); //Connect to database
         Scanner sc = new Scanner(System.in); //Scanner for top n queries
-        Scanner scPlace = new Scanner(System.in); //Scanner for user defined locations
-
 
 
         //ALL COUNTRIES
@@ -177,6 +179,29 @@ public class App
         System.out.println("\n \n \n Top " + n + " Cities of England. \n \n \n");
         ALcity = db1.statementCity(cityDistrict); //Populates ArrayList with cities
         printCity(n,ALcity); //Displays top n results from ArrayList
+
+
+
+        //Population of the world
+        population = db1.statementPopulation(popWorld);
+        System.out.println("The population of the world is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popContinent);
+        System.out.println("The population of the Asia is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popRegion);
+        System.out.println("The population of the Central Africa is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popCountry);
+        System.out.println("The population of the France is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popDistrict);
+        System.out.println("The population of the Scotland is " + population + ". \n \n \n");
+
+        population = db1.statementPopulation(popCity);
+        System.out.println("The population of the Berlin is " + population + ". \n \n \n");
+
+
 
 
         //Disconnect from database
