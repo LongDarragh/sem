@@ -8,7 +8,7 @@
 
 | ID | Requirement | Met | Screenshot |
 | ------------- |:-------------:| -----:| ----:|
-| 1 | All the countries in the world organised by largest population to smallest. | YES | [Image1](https://github.com/LongDarragh/sem/tree/master/Screenshots/1.png) |
+| 1 | All the countries in the world organised by largest population to smallest. | YES | ![Image1](https://github.com/LongDarragh/sem/tree/master/Screenshots/1.png) |
 | 2 | All the countries in a continent organised by largest population to smallest. | YES | [Image2](https://github.com/LongDarragh/sem/tree/master/Screenshots/2.png) |
 | 3 | All the countries in a region organised by largest population to smallest. | YES | [Image3](https://github.com/LongDarragh/sem/tree/master/Screenshots/3.png) |
 | 4 | The top N populated countries in the world where N is provided by the user. | YES | [Image4](https://github.com/LongDarragh/sem/tree/master/Screenshots/4.png) |
