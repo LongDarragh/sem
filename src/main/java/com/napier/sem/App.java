@@ -12,9 +12,11 @@ public class App
     static ArrayList<Country> ALcountry;
     static ArrayList<City> ALcity;
     static String population;
+    static ArrayList<Language> ALlanguage;
 
     //Stores value for top n queries where n is defined by the user
     static int n = 0;
+    static String languageInput = "";
 
 
     public static void main(String[] args)
@@ -40,10 +42,18 @@ public class App
         String popDistrict = "SELECT SUM(Population) FROM city WHERE District = 'Scotland'";
         String popCity = "SELECT Population FROM city WHERE Name = 'Berlin'";
 
+        //SQL query for language report
+        String language = "SELECT countrylanguage.language AS Language, SUM(country.Population) AS Number, SUM(country.Population)/(SELECT SUM(Population) FROM country)*100 AS Percentage\n" +
+                "FROM country, countrylanguage \n" +
+                "WHERE country.code=countrylanguage.CountryCode AND countrylanguage.Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')\n" +
+                "GROUP BY countrylanguage.Language\n" +
+                "ORDER BY SUM(country.Population) DESC";
+
+
 
         db1.connect("192.168.99.100:33060"); //Connect to database
         Scanner sc = new Scanner(System.in); //Scanner for top n queries
-
+        Scanner scLan = new Scanner(System.in);
 
         //ALL COUNTRIES
 
@@ -203,6 +213,10 @@ public class App
 
 
 
+        ALlanguage = db1.statementLanguage(language);
+        n = ALlanguage.size();
+        printLanguage(n, ALlanguage);
+
 
         //Disconnect from database
         db1.disconnect();
@@ -231,6 +245,18 @@ public class App
             System.out.print(c.get(i).getContinent() + " ");
             System.out.print(c.get(i).getRegion() + " ");
             System.out.print(c.get(i).getPopulation() + "\n");
+        }
+    }
+
+    //Method to display results for Country reports
+    public static void printLanguage(int size, ArrayList<Language> c)
+    {
+        for(int i = 0; i < size; i++)
+        {
+            System.out.print(c.get(i).getLanguage() + " | Number: ");
+            System.out.print(c.get(i).getNumber() + " | Percentage: ");
+            System.out.print(c.get(i).getPercentage() + "\n");
+
         }
     }
 }

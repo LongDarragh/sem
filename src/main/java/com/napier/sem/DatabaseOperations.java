@@ -163,4 +163,36 @@ public class DatabaseOperations
         }
         return c;
     }
+
+
+    public ArrayList<Language> statementLanguage(String s) {
+        ArrayList<Language> c = new ArrayList<>();
+
+        try
+        {
+            if( s != null) //Checks if the input String is Null
+            {
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(s);
+
+                //Adds results to an ArrayList
+                while (rs.next()) {
+                    c.add(new Language(rs.getString("Language"), rs.getString("Number"), rs.getString("Percentage")));
+                }
+            }
+            else
+            {
+                System.out.println("No statement found.");
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Failed to run SQL Query.");
+        }
+        catch (NullPointerException n)
+        {
+            System.out.println(n.getMessage());
+        }
+        return c;
+    }
 }
