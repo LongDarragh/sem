@@ -45,7 +45,7 @@
 
 |                   | Code Review 1 | Code Review 2 | Code Review 3 | Code Review 4 | Final Deliverable | Average |
 | ------------- | ------------- | ----- | ----- | ----- | ----- | ----- |
-| Long Darragh Chow | 0.25           | 0.4           | 0.2           | 0.5           | 0.3               | 0.33    |
-| Kieran Brown      | 0.25           | 0.2           | 0.4           | 0.5           | 0.3               | 0.33    |
+| Long Darragh Chow | 0.25           | 0.4           | 0.1           | 0.5           | 0.2               | 0.29    |
+| Kieran Brown      | 0.25           | 0.2           | 0.3           | 0.5           | 0.3               | 0.31    |
 | Ihtisham Chaudhry | 0.25           | 0.3           | 0.3           | 0             | 0.2               | 0.21    |
-| Brain Anderson    | 0.25           | 0.1           | 0.1           | 0             | 0.2               | 0.13    |
+| Brain Anderson    | 0.25           | 0.1           | 0.3           | 0             | 0.3               | 0.19    |
